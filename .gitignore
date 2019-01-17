@@ -115,4 +115,5 @@ dmypy.json
 .pyre/
 venv/
 src/NAME_LIST_test.csv
+src/NAME_LIST.csv
 src/invisible_friend*
