@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Author: Amalia Gregori <@am_aliag>
-# Version: 2.0.0
-# Last modified: 20190116 by @am_aliag
+# Version: 3.0.0
+# Last modified: 20191115 by @am_aliag
 
 # Little programming script for organizing a Secret Santa game
 
@@ -10,12 +10,12 @@
 try:
     from pandas import read_csv
 except:
-    print "pandas library needed, try 'pip install -U pandas'"
+    print("pandas library needed, try 'pip install -U pandas'")
 
 from sys import exit
 import smtplib
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEText import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 import getpass
 import argparse
 
@@ -34,7 +34,7 @@ def game(file_name, gmailUser, gmailPassword):
         # Open the given CSV with the names & emails
         input = read_csv(file_name)
     except:
-        print 'Filetype ERROR: File must be .csv'
+        print("Filetype ERROR: File must be .csv")
         exit(0)
     
     # First shuffle of input names
@@ -71,16 +71,16 @@ def game(file_name, gmailUser, gmailPassword):
             mailServer.login(gmailUser, gmailPassword)
 
         except:
-            print "Authentication ERROR: incorrect username or password"
+            print("Authentication ERROR: incorrect username or password")
 
             # Second try...
             try:
-                gmailUser = raw_input("Username: ")
+                gmailUser = input("Username: ")
                 gmailPassword = getpass.getpass()
                 mailServer.login(gmailUser, gmailPassword)
  
             except:
-                print "Authentication ERROR: incorrect username or password"
+                print("Authentication ERROR: incorrect username or password")
                 mailServer.close()
                 exit(0)
 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     file_name = args.file_name
     
     # Asking for gmail credentials
-    gmailUser = raw_input("Username: ")
+    gmailUser = input("Username: ")
     gmailPassword = getpass.getpass()
 
     game(file_name, gmailUser, gmailPassword)

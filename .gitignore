@@ -112,8 +112,9 @@ venv.bak/
 dmypy.json
 
 # Pyre type checker
+.vscode*
 .pyre/
-venv/
+venv*/
 src/NAME_LIST_test.csv
 src/NAME_LIST.csv
 src/invisible_friend*
